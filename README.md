@@ -6,7 +6,7 @@ A Flask-based web application for tracking cryptocurrency prices and market data
 ## Features
 
 - Real-time cryptocurrency price tracking (simulated)
-- Search functionality for tokens
+- Search functionality for tokens (NoneFinished)
 - Responsive web interface with Tailwind CSS
 - Token detail pages
 - Price change indicators (5-minute and 24-hour)
