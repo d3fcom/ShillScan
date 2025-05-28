@@ -1,7 +1,7 @@
 
 # ShillScan - Cryptocurrency Tracker
 
-A Flask-based web application for tracking cryptocurrency prices and market data. This is a demo application that uses mock data for educational purposes.
+A Flask-based web application for tracking cryptocurrency prices and market data. This is a demo application (Abandoned project) that uses mock data for educational purposes.
 
 ## Features
 
