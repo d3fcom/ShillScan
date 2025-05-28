@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ token.name }} ({{ token.symbol }}) - DEX Screener{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-bold mb-4">{{ token.name }} ({{ token.symbol }})</h2>
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div>
+            <p class="text-gray-600">Price</p>
+            <p class="text-2xl font-semibold">${{ "%.2f"|format(token.price) }}</p>
+        </div>
+        <div>
+            <p class="text-gray-600">24h Change</p>
+            <p class="text-2xl font-semibold {% if token.change_24h > 0 %}text-green-600{% else %}text-red-600{% endif %}">
+                {{ "%.2f"|format(token.change_24h) }}%
+            </p>
+        </div>
+        <div>
+            <p class="text-gray-600">Volume (24h)</p>
+            <p class="text-xl">${{ "{:,.0f}".format(token.volume_24h) }}</p>
+        </div>
+        <div>
+            <p class="text-gray-600">Market Cap</p>
+            <p class="text-xl">${{ "{:,.0f}".format(token.market_cap) }}</p>
+        </div>
+    </div>
+    <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-2">Price Chart (7 days)</h3>
+        <canvas id="priceChart" width="400" height="200"></canvas>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+<script>
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['7 days ago', '6 days ago', '5 days ago', '4 days ago', '3 days ago', '2 days ago', 'Today'],
+            datasets: [{
+                label: 'Price',
+                data: [
+                    {{ token.price * 0.9 }},
+                    {{ token.price * 0.95 }},
+                    {{ token.price * 1.05 }},
+                    {{ token.price * 1.02 }},
+                    {{ token.price * 0.98 }},
+                    {{ token.price * 1.01 }},
+                    {{ token.price }}
+                ],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

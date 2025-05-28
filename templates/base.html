@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ShillScan{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-pastel-blue">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div id="sidebar" class="w-64 bg-sidebar h-screen fixed left-0 top-0 overflow-y-auto transition-all duration-300 ease-in-out">
+            <!-- Sidebar content -->
+        </div>
+
+        <!-- Main content -->
+        <div id="main-content" class="ml-64 flex-1 transition-all duration-300 ease-in-out">
+            <header class="bg-header text-white p-4">
+                <div class="container mx-auto flex justify-between items-center">
+                    <h1 class="text-2xl font-bold">ShillScan</h1>
+                    <nav>
+                        <a href="/" class="hover:text-accent">Home</a>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="container mx-auto mt-8">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

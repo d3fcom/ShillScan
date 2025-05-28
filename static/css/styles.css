@@ -1,0 +1,73 @@
+/* Custom color scheme */
+:root {
+    --bg-pastel-blue: #F0F4F8;
+    --text-dark-blue: #2C3E50;
+    --accent-neon-pink: #FF61D8;
+    --sidebar-pastel-blue: #A0D7E7;
+}
+
+body {
+    background-color: var(--bg-pastel-blue);
+    color: var(--text-dark-blue);
+}
+
+.bg-pastel-blue {
+    background-color: var(--bg-pastel-blue);
+}
+
+.bg-sidebar {
+    background-color: var(--sidebar-pastel-blue);
+}
+
+.bg-header {
+    background-color: var(--sidebar-pastel-blue);
+}
+
+.text-text {
+    color: var(--text-dark-blue);
+}
+
+.text-accent {
+    color: var(--accent-neon-pink);
+}
+
+.hover\:text-accent:hover {
+    color: var(--accent-neon-pink);
+}
+
+/* Neon effect for buttons and important elements */
+.neon-effect {
+    transition: all 0.3s ease;
+}
+
+.neon-effect:hover {
+    text-shadow: 0 0 5px var(--accent-neon-pink), 0 0 10px var(--accent-neon-pink), 0 0 15px var(--accent-neon-pink);
+    box-shadow: 0 0 5px var(--accent-neon-pink), 0 0 10px var(--accent-neon-pink), 0 0 15px var(--accent-neon-pink);
+}
+
+/* Token row styles */
+.token-row:hover {
+    background-color: rgba(160, 215, 231, 0.1);
+}
+
+/* Sidebar styles */
+#sidebar {
+    transition: width 0.3s ease-in-out;
+}
+
+#sidebar.w-16 .p-4 > *:not(#sidebarToggle) {
+    display: none;
+}
+
+#main-content {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Sidebar toggle button styles */
+#sidebarToggle, #sidebarOpen {
+    transition: all 0.3s ease;
+}
+
+#sidebarToggle:hover, #sidebarOpen:hover {
+    transform: scale(1.1);
+}
